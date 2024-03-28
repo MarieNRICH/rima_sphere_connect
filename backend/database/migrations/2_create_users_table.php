@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name')->unique();
-            $table->string('last_name')->unique();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('pseudo')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('phone_number')->unique();
-            $table->string('date_of_birth')->unique();
-            $table->string('address')->unique();
-            $table->string('zip_code')->unique();
+            $table->string('phone_number')->nullable()->default(null);
+            $table->string('date_of_birth')->nullable();
+            $table->string('address')->nullable();
+            $table->string('zip_code')->nullable();
             $table->string('gender')->nullable();
             $table->string('avatar')->nullable();
             $table->string('emergency_phone_contact')->unique();
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreignId('role_id')->default(1)->constrained();
+            $table->foreignId('role_id')->default(1)->constrained('roles');
         });
 
         Schema::create('sessions', function (Blueprint $table) {

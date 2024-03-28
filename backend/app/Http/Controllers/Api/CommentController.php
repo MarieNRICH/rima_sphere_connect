@@ -22,10 +22,11 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
-            'content' => 'required|max:255',
+            // 'content' => 'required|max:255',
             // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg', //image uploaded as a file
-            'tags' => 'nullable|array', //tags is an array of strings
+            // 'tags' => 'nullable|max:3', //tags is an array of strings
         ]);
 
         $filename = "";
@@ -39,8 +40,9 @@ class CommentController extends Controller
         } else {
             $filename = Null;
         }
-
-        $comment = Comment::create($request->all());
+        // dd($request);
+        // create a new comment
+        $comment = Comment::create(array_merge($request->all(), ['image' => $filename]));
 
         return response()->json([
             'status' => 'Success',
@@ -63,8 +65,11 @@ class CommentController extends Controller
     {
         $request->validate([
             'content' => 'required|max:255',
-            // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg', //image uploaded as a file
-            'tags' => 'nullable|array', //tags is an array of strings
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg', //image uploaded as a file
+            'tags' => 'nullable',
+
+            // 'activity_id' => 'required|exists:activities,id',
+            // 'user_id' => 'required|exists:users,id',
         ]);
 
         $filename = "";

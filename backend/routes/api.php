@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PictureController;
 use App\Http\Controllers\Api\SectionController;
 use App\Http\Controllers\Api\ActivityController;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +22,25 @@ use App\Http\Controllers\Api\ActivityController;
 |
 */
 
+// Create link for clients : React, Vue, Angular, Node, Js Native 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::apiResource("activities", ActivityController::class);
-Route::apiResource("coments", CommentController::class);
+Route::apiResource("comments", CommentController::class);
 Route::apiResource("events", EventController::class);
 Route::apiResource("pictures", PictureController::class);
 Route::apiResource("roles", RoleController::class);
 Route::apiResource("sections", SectionController::class);
+
+//Accessible to everyone
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+//Accessible only via JWT
+Route::middleware('auth:api')->group(function () {
+    Route::get('/currentuser', [UserController::class, 'currentUser']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+});

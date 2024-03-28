@@ -14,7 +14,7 @@ class Section extends Model
         'material',
         'ffck_licence_number',
         'member_ship_price',
-        'activity_contribution',
+        'activity_contribution_rate',
     ];
 
     // Plural name cause a user can post multiple pictures

@@ -14,6 +14,9 @@ class Picture extends Model
     protected $fillable = [
         'picture_name',
         'description',
+        'section_id',
+        'event_id',
+        'activity_id',
     ];
 
     //Function name in singular bcs only one section in relation

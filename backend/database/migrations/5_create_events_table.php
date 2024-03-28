@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('place_address');
             $table->dateTime('start_at');
             $table->dateTime('end_at');
-            $table->text('description');
-            $table->integer('status');
-            $table->integer('duration');
-            $table->integer('volunteer')->default(0);
-            $table->integer('participant')->default(0);
+            $table->longText('description')->nullable();
+            $table->string('status');
+            $table->unsignedInteger('duration');
+            $table->unsignedInteger('volunteer')->default(0);
+            $table->unsignedInteger('participant')->default(0);
             $table->timestamps();
         });
     }

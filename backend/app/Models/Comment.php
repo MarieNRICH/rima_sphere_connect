@@ -13,6 +13,9 @@ class Comment extends Model
         'content',
         'image',
         'tags',
+        'activity_id',
+        'user_id',
+
     ];
 
     // Singular name cause a there only one comment in relation 

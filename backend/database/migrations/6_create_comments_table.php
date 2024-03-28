@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('content');
             $table->string('image')->nullable();
             $table->string('tags')->nullable();
+            // $table->bigInteger('activity_id')->unsigned();
             $table->timestamps();
 
             $table->foreignId('activity_id')->constrained()->onDelete('cascade');
