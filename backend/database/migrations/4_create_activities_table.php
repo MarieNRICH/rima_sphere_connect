@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('activity_name');
             $table->longText('description')->nullable();
-            $table->date('activity_date');
             $table->dateTime('start_at');
             $table->dateTime('end_at');
             $table->unsignedInteger('duration');

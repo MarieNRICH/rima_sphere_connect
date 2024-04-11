@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
             $table->string('section_name');
-            $table->integer('number_of_member');
+            $table->string('number_of_member');
             $table->string('material');
             $table->string('ffck_licence_number')->unique();
             $table->double('member_ship_price')->unique();

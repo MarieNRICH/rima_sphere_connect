@@ -31,7 +31,6 @@ class ActivityFactory extends Factory
         return [
             'activity_name' => fake()->sentence(),
             'description' => fake()->paragraph(),
-            'activity_date' => fake()->date(),
             'start_at' => fake()->dateTime(),
             'end_at' => fake()->dateTime(),
             'duration' => fake()->numberBetween(1, 24), // time in hour

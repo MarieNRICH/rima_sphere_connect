@@ -25,9 +25,8 @@ class ActivityController extends Controller
         $request->validate([
             'activity_name' => 'required|max:100',
             'description' => 'required|max:500',
-            'activity_date' => 'required|date_format:Y-m-d',
-            'start_at' => 'required|date_format:Y-m-d H:i:s',
-            'end_at' => 'required|date_format:Y-m-d H:i:s',
+            // 'end_at' => 'required|date_format:Y-m-dTH:i',
+            // 'start_at' => 'required|date_format:Y-m-dTH:i',
             'duration' => 'required|integer|min:0',
             'place_address' => 'required|max:100',
             'challengers_number' => 'required|integer|min:0', // check that integer is >= 0
@@ -59,9 +58,8 @@ class ActivityController extends Controller
         $this->validate($request, [
             'activity_name' => 'required|max:100',
             'description' => 'required|max:500',
-            'activity_date' => 'required|date_format:Y-m-d', // Example'YYYY-MM-DD'
-            'start_at' => 'required|date_format:Y-m-d H:i:s', // Example 'HH:MM:SS'
-            'end_at' => 'required|date_format:Y-m-d H:i:s',
+            // 'start_at' => 'required|date_format:Y-m-d H:i', // Example 'HH:MM:SS'
+            // 'end_at' => 'required|date_format:Y-m-d H:i',
             'duration' => 'required|integer|min:0',
             'place_address' => 'required|max:100',
             'challengers_number' => 'required|integer|min:0', // check that integer is >= 0

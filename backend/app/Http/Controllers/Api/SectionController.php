@@ -24,14 +24,14 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'section_name' => 'required|max:255',
-        //     'number_of_member' => 'required|integer|min:0',
-        //     'material' => 'nullable|max:255',
-        //     'ffck_licence_number' => 'nullable|max:255',
-        //     'member_ship_price' => 'required|numeric|min:0',
-        //     'activity_contribution_ratee' => 'required|numeric|min:0',
-        // ]);
+        $request->validate([
+            'section_name' => 'required|max:255',
+            'number_of_member' => 'required|integer|min:0',
+            'material' => 'nullable|max:255',
+            'ffck_licence_number' => 'nullable|max:255',
+            'member_ship_price' => 'required|numeric|min:0',
+            'activity_contribution_rate' => 'required|numeric|min:0',
+        ]);
 
         // Create a new section
         $section = Section::create($request->all());
@@ -55,7 +55,7 @@ class SectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $this->validate($request, [
             'section_name' => 'required|max:255',
             'number_of_member' => 'required|integer|min:0',
             'material' => 'nullable|max:255',
@@ -68,7 +68,7 @@ class SectionController extends Controller
         $section->update($request->all());
 
         return response()->json([
-            'status' => 'Updated successfully'
+            'status' => 'Mise à jour avec succès'
         ]);
     }
 

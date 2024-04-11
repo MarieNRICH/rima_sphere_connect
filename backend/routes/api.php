@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource("activities", ActivityController::class);
+Route::post('/activities/{id}', [ActivityController::class, 'update']);
 Route::apiResource("comments", CommentController::class);
 Route::apiResource("events", EventController::class);
 Route::apiResource("pictures", PictureController::class);
